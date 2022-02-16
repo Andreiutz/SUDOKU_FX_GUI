@@ -11,13 +11,7 @@
 <GridPane alignment="CENTER" xmlns:fx="http://javafx.com/fxml"
           fx:controller="com.example.sudoku_fx_gui.HelloController">
 
-    <TableView GridPane.columnIndex="0" GridPane.rowIndex="0">
-        <columns>
-            <TableColumn text="1">
 
-            </TableColumn>
-        </columns>
-    </TableView>
 
 
 
