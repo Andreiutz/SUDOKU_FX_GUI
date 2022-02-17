@@ -1,23 +1,25 @@
 package com.example.sudoku_fx_gui;
 
+import java.util.Objects;
+
 public class SudokuSolver {
     
-    public void solveSudoku(char[][] board) {
+    public void solveSudoku(SudokuBoard board) {
         solve(board);
     }
 
     //Solves the board, returns true if possible, false instead
-    public boolean solve(char[][] board) {
+    public boolean solve(SudokuBoard board) {
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
-                if (board[i][j] == '.') {
-                    for (char c = '1'; c <= '9'; c++) {
+                if (board.get(i,j) == 0) {
+                    for (Integer c = 1; c <= 9; c++) {
                         if (valid(board, i, j, c)) {
-                            board[i][j] = c;
+                            board.set(i, j, c);
                             if (solve(board)) {
                                 return true;
                             } else {
-                                board[i][j] = '.';
+                                board.set(i, j, 0);
                             }
                         }
                     }
@@ -29,13 +31,14 @@ public class SudokuSolver {
     }
 
     //Verifies if certain cell can take the c char
-    public boolean valid(char[][] board, int row, int col, char c) {
+    public boolean valid(SudokuBoard board, int row, int col, Integer c) {
         for (int i = 0; i < 9; i++) {
-            if (board[row][i] == c) return false;
-            if (board[i][col] == c) return false;
-            if (board[row / 3 * 3 + i / 3][col / 3 * 3 + i % 3] == c) return false;
+            if (Objects.equals(board.get(row, i), c)) return false;
+            if (Objects.equals(board.get(i, col), c)) return false;
+            if (Objects.equals(board.get(row / 3 * 3 + i / 3, col / 3 * 3 + i % 3), c)) return false;
         }
         return  true;
     }
+
 
 }
