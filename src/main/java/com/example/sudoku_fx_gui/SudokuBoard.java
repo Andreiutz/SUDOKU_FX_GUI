@@ -5,7 +5,11 @@ public class SudokuBoard {
     private Integer[][] board = new Integer[9][9];
 
     public SudokuBoard() {
-
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 9; j++) {
+                this.board[i][j] = 0;
+            }
+        }
     }
 
     public SudokuBoard(SudokuBoard copy) {
