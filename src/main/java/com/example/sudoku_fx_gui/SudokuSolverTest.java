@@ -65,7 +65,16 @@ public class SudokuSolverTest {
         assertTrue(solver.solve(board));
     }
 
+    @Test
+    public void testConsistent() {
+        SudokuBoard board = new SudokuBoard();
+        SudokuSolver solver = new SudokuSolver();
+        setupTestBoard(board);
+        assertTrue(solver.consistent(board));
+        board.set(0, 2, 3);
+        assertFalse(solver.consistent(board));
 
+    }
 
 
 }
