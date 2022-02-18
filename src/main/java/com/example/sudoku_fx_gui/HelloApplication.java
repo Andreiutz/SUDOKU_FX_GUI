@@ -3,6 +3,7 @@ package com.example.sudoku_fx_gui;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
@@ -25,6 +26,8 @@ public class HelloApplication extends Application {
         controller.setUpGrid(grid);
         Scene scene = new Scene(grid, 320, 240);
         stage.setScene(scene);
+        stage.setTitle("Sudoku Game");
+        stage.getIcons().add(new Image("icon.png"));
         stage.show();
     }
 

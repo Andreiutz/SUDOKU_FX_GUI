@@ -85,9 +85,9 @@ public class HelloController {
                         //it has i and j coordinates
                         //draw the 3x3 square it belongs to
 
-
-                        drawRelatedField(t);
-
+                        if (t.isEditable()) {
+                            drawRelatedField(t);
+                        }
                     }
                 });
 
@@ -121,7 +121,7 @@ public class HelloController {
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 9; j++) {
                 if (i == x || y == j || (i >= xStart && i <= xStart+2 && j >= yStart && j <= yStart+2)) {
-                    textFields[i][j].setStyle("-fx-background-color: lightgray");
+                    textFields[i][j].setStyle("-fx-background-color: #E8E8E8");
                 } else {
                     textFields[i][j].setStyle("-fx-background-color: white");
                 }
@@ -261,6 +261,7 @@ public class HelloController {
             for (int j = 0; j < 9; j++) {
                 if (initialBoard[i][j] != 0) {
                     textFields[i][j].setText(initialBoard[i][j].toString());
+                    textFields[i][j].setEditable(false);
                 } else {
                     textFields[i][j].setText("");
                 }
